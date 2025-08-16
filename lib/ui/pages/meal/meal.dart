@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:theme2/core/model/category_model.dart';
 import 'package:theme2/core/router/router.dart';
+import 'meal_content.dart';
 
 class YZMealScreen extends StatelessWidget {
   static const String routeName = "/meal";
@@ -17,7 +18,7 @@ class YZMealScreen extends StatelessWidget {
         title: Text(category.title!),
       ),
       body: Center(
-        child: Text("1232"),
+        child: YZMealContent(),
       ),
     );
   }
