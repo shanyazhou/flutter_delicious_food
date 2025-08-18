@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:theme2/core/router/router.dart";
 import "package:theme2/core/services/meal_request.dart";
+import "package:theme2/core/viewModel/favor_view_model.dart";
 import "package:theme2/core/viewModel/meal_view_model.dart";
 import "package:theme2/ui/pages/main/main.dart";
 
@@ -10,12 +11,30 @@ void main(){
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
-    ChangeNotifierProvider(
-      create: (BuildContext context) {
-        return YZMealViewModel();
-      },
-      child: MyApp() ,
+
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (BuildContext context) {
+            return YZMealViewModel();
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (BuildContext context) {
+            return YZFavorViewModel();
+          },
+        )
+      ],
+      child: MyApp(),
     )
+
+    // 单个 监听
+    // ChangeNotifierProvider(
+    //   create: (BuildContext context) {
+    //     return YZMealViewModel();
+    //   },
+    //   child: MyApp() ,
+    // )
 
   );
 }
