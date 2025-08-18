@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theme2/ui/pages/detail/detail.dart';
 import 'package:theme2/ui/pages/main/main.dart';
 import 'package:theme2/ui/pages/meal/meal.dart';
 
@@ -14,6 +15,7 @@ class YZRouter {
     },
 
     YZMealScreen.routeName: (ctx) => YZMealScreen(),
+    YZDetailScreen.routeName: (ctx) => YZDetailScreen(),
   };
 
   static final RouteFactory generateRoute = (setting) {

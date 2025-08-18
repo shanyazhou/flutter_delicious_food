@@ -8,6 +8,8 @@ YZMealModel yzMealModelFromJson(String str) => YZMealModel.fromJson(json.decode(
 
 String yzMealModelToJson(YZMealModel data) => json.encode(data.toJson());
 
+List<String> complexStringList = ["简单", "中等", "困难"];
+
 class YZMealModel {
   List<Meal> meal;
 
@@ -30,6 +32,7 @@ class Meal {
   String title;
   int affordability;
   int complexity;
+  String complexityString;
   String imageUrl;
   int duration;
   List<String> ingredients;
@@ -45,6 +48,7 @@ class Meal {
     required this.title,
     required this.affordability,
     required this.complexity,
+    required this.complexityString,
     required this.imageUrl,
     required this.duration,
     required this.ingredients,
@@ -61,6 +65,7 @@ class Meal {
     title: json["title"],
     affordability: json["affordability"],
     complexity: json["complexity"],
+    complexityString: complexStringList[json["complexity"]],
     imageUrl: json["imageUrl"],
     duration: json["duration"],
     ingredients: List<String>.from(json["ingredients"].map((x) => x)),
@@ -77,6 +82,7 @@ class Meal {
     "title": title,
     "affordability": affordability,
     "complexity": complexity,
+    "complexityString": complexityString,
     "imageUrl": imageUrl,
     "duration": duration,
     "ingredients": List<dynamic>.from(ingredients.map((x) => x)),

@@ -33,9 +33,13 @@ class MyApp extends StatelessWidget {
         /// 设置背景颜色
         canvasColor: Color.fromARGB(255, 254, 222, 200),
         primaryColor: Color.fromARGB(255, 254, 222, 200),
+        /// 设置核心背景色设置
+        scaffoldBackgroundColor: Color.fromARGB(255, 255, 254, 214),
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.redAccent
-        )
+          backgroundColor: Colors.redAccent,
+            titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
+            foregroundColor: Colors.white
+        ),
 
       ),
       // home: YZMainScreen(),
