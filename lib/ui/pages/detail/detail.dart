@@ -34,9 +34,9 @@ class YZDetailScreen extends StatelessWidget {
             backgroundColor: Colors.amber,
             onPressed: (){
               if (isFavor) {
-                favorVM.favorMeals.remove(meal) ;
+                favorVM.removeMeal(meal);
               }else{
-                favorVM.favorMeals.add(meal);
+                favorVM.addMeal(meal);
               }
             }
           );

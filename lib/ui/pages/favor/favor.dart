@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'favor_content.dart';
 
 class YZFavorPage extends StatelessWidget {
   const YZFavorPage({super.key});
@@ -9,9 +10,7 @@ class YZFavorPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("收藏"),
       ),
-      body: Center(
-        child: Text("这里是收藏"),
-      ),
+      body: YZFavorContent(),
     );
   }
 }

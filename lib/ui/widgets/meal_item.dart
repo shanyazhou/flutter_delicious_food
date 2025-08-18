@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:theme2/core/model/meal_model.dart';
+import 'package:theme2/core/viewModel/favor_view_model.dart';
 import '../pages/detail/detail.dart';
 import 'operation_item.dart';
 
@@ -56,7 +58,27 @@ class YZMealItem extends StatelessWidget {
                 children: [
                   YZOperationItem(icon: Icon(Icons.schedule), name: "${meal.duration.toString()} min",),
                   YZOperationItem(icon: Icon(Icons.restaurant), name: "难度 ${meal.complexityString}",),
-                  YZOperationItem(icon: Icon(Icons.favorite), name: "未收藏",),
+
+                  Consumer<YZFavorViewModel>(
+                    builder: (ctx, favorVM, child){
+                      return GestureDetector(
+                        child: YZOperationItem(
+                          icon: Icon(
+                            favorVM.isFavor(meal) ? Icons.favorite : Icons.favorite_border,
+                            color: favorVM.isFavor(meal) ? Colors.red : Colors.black,
+                          ),
+                          name: favorVM.isFavor(meal) ? "已收藏" : "未收藏",
+                        ),
+                        onTap: (){
+                          if (favorVM.isFavor(meal)) {
+                            favorVM.removeMeal(meal);
+                          }else{
+                            favorVM.addMeal(meal);
+                          }
+                        },
+                      );
+                    },
+                  ),
                 ],
               ),
             )
