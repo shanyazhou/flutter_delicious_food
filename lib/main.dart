@@ -3,6 +3,7 @@ import "package:provider/provider.dart";
 import "package:theme2/core/router/router.dart";
 import "package:theme2/core/services/meal_request.dart";
 import "package:theme2/core/viewModel/favor_view_model.dart";
+import "package:theme2/core/viewModel/filter_view_model.dart";
 import "package:theme2/core/viewModel/meal_view_model.dart";
 import "package:theme2/ui/pages/main/main.dart";
 
@@ -14,14 +15,32 @@ void main(){
 
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
+        // ChangeNotifierProvider(
+        //   create: (BuildContext context) {
+        //     return YZMealViewModel();
+        //   },
+        // ),
+
+        //YZMealViewModel 依赖 YZFilterViewModel
+        //所以，这个泛型，先写被依赖的YZFilterViewModel，再写YZMealViewModel
+        ChangeNotifierProxyProvider<YZFilterViewModel, YZMealViewModel>(
           create: (BuildContext context) {
             return YZMealViewModel();
+          },
+          update: (ctx, filterVM, mealVM){
+            mealVM!.updateFilterVM(filterVM);
+            return mealVM;
+          }
+        ),
+
+        ChangeNotifierProvider(
+          create: (BuildContext context) {
+            return YZFavorViewModel();
           },
         ),
         ChangeNotifierProvider(
           create: (BuildContext context) {
-            return YZFavorViewModel();
+            return YZFilterViewModel();
           },
         )
       ],
