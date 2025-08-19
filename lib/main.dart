@@ -21,6 +21,13 @@ void main(){
         //   },
         // ),
 
+        // 先注册被依赖的 YZFilterViewModel
+        ChangeNotifierProvider(
+          create: (BuildContext context) {
+            return YZFilterViewModel();
+          },
+        ),
+
         //YZMealViewModel 依赖 YZFilterViewModel
         //所以，这个泛型，先写被依赖的YZFilterViewModel，再写YZMealViewModel
         ChangeNotifierProxyProvider<YZFilterViewModel, YZMealViewModel>(
@@ -38,11 +45,6 @@ void main(){
             return YZFavorViewModel();
           },
         ),
-        ChangeNotifierProvider(
-          create: (BuildContext context) {
-            return YZFilterViewModel();
-          },
-        )
       ],
       child: MyApp(),
     )
