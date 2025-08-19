@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:theme2/ui/pages/filter/filter.dart';
 
 class YZHomeDrawer extends StatelessWidget {
   const YZHomeDrawer({super.key});
@@ -24,7 +25,7 @@ class YZHomeDrawer extends StatelessWidget {
                 Navigator.of(context).pop();
               }),
               buildListTile(Icon(Icons.settings), "过滤", (){
-                Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(YZFilterScreen.routeName);
               }),
             ],
           ),

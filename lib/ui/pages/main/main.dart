@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:theme2/ui/pages/favor/favor.dart';
 import 'package:theme2/ui/pages/home/home.dart';
+import '../home/home_drawer.dart';
 
 class YZMainScreen extends StatefulWidget {
   //  首页默认路由可以设置为/
@@ -19,6 +20,7 @@ class _YZMainScreenState extends State<YZMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: YZHomeDrawer(),
       body: IndexedStack(
         index: _currentIndex,
         children: [
